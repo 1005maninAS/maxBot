@@ -1,4 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 interface DefaultTabs {
   id: number;
@@ -23,6 +24,7 @@ const MAIN_TABS: DefaultTabs[] = [
 ];
 
 export default function MainPage() {
+  const navigate = useNavigate();
   return (
     <Stack sx={{ alignItems: "center" }}>
       <Typography variant="h4">Требования в тумане</Typography>
@@ -33,12 +35,12 @@ export default function MainPage() {
         болей.
       </Typography>
       {MAIN_TABS.map((tab) => (
-        <Button key={tab.id}>
+        <Button key={tab.id} onClick={() => navigate(tab.url)}>
           <Stack>
             <Typography variant="h6">{tab.label}</Typography>
             <Typography variant="body1">{tab.description}</Typography>
           </Stack>
-        </Button> 
+        </Button>
       ))}
     </Stack>
   );
