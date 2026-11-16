@@ -1,5 +1,4 @@
 import { Button, Stack, Typography } from "@mui/material";
-import type { MaxBridgeWebApp } from "max-bridge";
 import { useNavigate } from "react-router-dom";
 
 interface DefaultTabs {
@@ -25,14 +24,14 @@ const MAIN_TABS: DefaultTabs[] = [
 ];
 
 interface Props {
-  userId: MaxBridgeWebApp | string;
+  userId: string;
 }
 
 export default function MainPage({ userId }: Props) {
   const navigate = useNavigate();
   return (
     <Stack sx={{ alignItems: "center" }}>
-      <Typography variant="h4">{userId.toString()}</Typography>
+      <Typography variant="h4">{userId}</Typography>
       <Typography variant="h4">Требования в тумане</Typography>
       <Typography variant="h6">Симулятор корпоративного абсурда</Typography>
 
