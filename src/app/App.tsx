@@ -32,7 +32,7 @@ const App = () => {
         <Routes>
           <Route
             path="/main"
-            element={<MainPage userId={userId || "нет id"} />}
+            element={<MainPage userId={userId || "неттттт id"} />}
           />
           <Route path="/ask" element={<AskPage />} />
           <Route path="/tz" element={<TzPage />} />
