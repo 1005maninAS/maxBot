@@ -7,6 +7,7 @@ import TzPage from "../pages/TzPage/TzPage";
 
 const App = () => {
   const [userId, setUserId] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string | null>(null);
 
   useEffect(() => {
     if (window.WebApp?.initData) {
@@ -15,6 +16,7 @@ const App = () => {
       if (userJson) {
         const user = JSON.parse(userJson);
         setUserId(String(user.id));
+        setUserName(String(user.username));
       }
     }
   }, []);
@@ -24,11 +26,24 @@ const App = () => {
         <Routes>
           <Route
             path="/main"
-            element={<MainPage userId={userId || "неттттт id"} />}
+            element={
+              <MainPage
+                userId={userId || "неттттт id"}
+                userName={userName || "неттттт id"}
+              />
+            }
           />
           <Route path="/ask" element={<AskPage />} />
           <Route path="/tz" element={<TzPage />} />
-          <Route path="*" element={<MainPage userId={userId || "нет id"} />} />
+          <Route
+            path="*"
+            element={
+              <MainPage
+                userId={userId || "нет id"}
+                userName={userName || "неттттт id"}
+              />
+            }
+          />
         </Routes>
       </Container>
     </BrowserRouter>
