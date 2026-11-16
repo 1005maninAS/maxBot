@@ -9,14 +9,13 @@ const App = () => {
   const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    // Проверяем, что window.WebApp существует, прежде чем читать initData
-    if (window.WebApp) {
-      const initData = window.WebApp.initData;
-      setUserId(initData);
-    } else {
-      // Если WebApp нет, можно записать в состояние заглушку или лог
-      console.log("window.WebApp не найден. Откройте приложение внутри MAX.");
-      setUserId("(WebApp не найден — открыто не в MAX)");
+    if (window.WebApp?.initData) {
+      const urlParams = new URLSearchParams(window.WebApp.initData);
+      const userJson = urlParams.get("user");
+      if (userJson) {
+        const user = JSON.parse(userJson);
+        setUserId(String(user.id));
+      }
     }
   }, []);
   return (
