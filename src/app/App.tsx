@@ -4,13 +4,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AskPage from "../pages/AskPage/AskPage";
 import MainPage from "../pages/MainPage/MainPage";
 import TzPage from "../pages/TzPage/TzPage";
+import type { MaxBridgeWebApp } from "max-bridge";
 
 const App = () => {
-  const [userId, setUserId] = useState(null);
+  const [userId, setUserId] = useState<MaxBridgeWebApp | null>(null);
 
   useEffect(() => {
     if (window.WebApp) {
-      const initData = window.WebApp.initData;
+      const initData = window.WebApp;
 
       if (initData) {
         const urlParams = new URLSearchParams(initData);
@@ -18,7 +19,7 @@ const App = () => {
 
         if (userJson) {
           const user = JSON.parse(userJson);
-          setUserId(user.id);
+          setUserId(initData);
           console.log("User ID:", user.id);
         }
       }
