@@ -9,9 +9,16 @@ const App = () => {
   const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    setUserId(window.WebApp.initData);
+    // Проверяем, что window.WebApp существует, прежде чем читать initData
+    if (window.WebApp) {
+      const initData = window.WebApp.initData;
+      setUserId(initData);
+    } else {
+      // Если WebApp нет, можно записать в состояние заглушку или лог
+      console.log("window.WebApp не найден. Откройте приложение внутри MAX.");
+      setUserId("(WebApp не найден — открыто не в MAX)");
+    }
   }, []);
-
   return (
     <BrowserRouter>
       <Container sx={{ maxWidth: "1400px" }}>
