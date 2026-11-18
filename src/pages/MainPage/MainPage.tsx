@@ -32,7 +32,9 @@ export default function MainPage() {
   const navigate = useNavigate();
   return (
     <Stack sx={{ alignItems: "center" }}>
-      <Typography variant="subtitle1">{window.WebApp.initData}</Typography>
+      <Typography variant="subtitle1" sx={{ wordBreak: "break-all" }}>
+        {window.WebApp.initData}
+      </Typography>
       <Typography variant="h4">Требования в тумане</Typography>
       <Typography variant="h6">Симулятор корпоративного абсурда</Typography>
 
