@@ -23,18 +23,16 @@ const MAIN_TABS: DefaultTabs[] = [
   },
 ];
 
-interface Props {
-  userId: string;
-  userName: string;
-}
+// interface Props {
+//   userId: string;
+//   userName: string;
+// }
 
-export default function MainPage({ userId, userName }: Props) {
+export default function MainPage() {
   const navigate = useNavigate();
   return (
     <Stack sx={{ alignItems: "center" }}>
-      <Typography variant="h4">
-        {userId} {userName}
-      </Typography>
+      <Typography variant="subtitle1">{window.WebApp.initData}</Typography>
       <Typography variant="h4">Требования в тумане</Typography>
       <Typography variant="h6">Симулятор корпоративного абсурда</Typography>
 
